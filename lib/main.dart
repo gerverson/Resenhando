@@ -1,13 +1,17 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'dicas.dart';
+import 'package:resenhando/dicas.dart';
 
 void main() {
-  print("oi");
   runApp(MaterialApp(
-    title: "Resenhando",
-    home: Stack(
+    title: 'Navigation Basics',
+    home: FirstRoute(),
+  ));
+}
+
+class FirstRoute extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
       children: <Widget>[
         Image.asset(
           "imagens/lapis.jpeg",
@@ -170,13 +174,18 @@ void main() {
             child: RaisedButton(
                 child: Text("Dicas de Português",
                     style: TextStyle(color: Colors.white)),
-                onPressed: null,
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SecondScreen()),
+                  );
+                },
                 shape: RoundedRectangleBorder(
                     borderRadius: new BorderRadius.circular(30.0)))),
       ],
-    ),
-  ));
-}
+    );
+//  ));
+}}
 
 void _onPressed() {
   print("Clique");
