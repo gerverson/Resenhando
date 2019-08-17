@@ -66,7 +66,12 @@ class FirstRoute extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(right: 2.0),
                   child: FlatButton(
-                      onPressed: null,
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => HelpScreen(data: 'Estrutura.html')),
+                        );
+                      },
                       child: Stack(children: <Widget>[
                         Image.asset(
                           'imagens/bloco.png',
@@ -89,7 +94,12 @@ class FirstRoute extends StatelessWidget {
                     padding: const EdgeInsets.only(right: 2.0),
                     child: Stack(children: <Widget>[
                       FlatButton(
-                          onPressed: null,
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => HelpScreen(data: 'Interpretar.html')),
+                            );
+                          },
                           child: Stack(children: <Widget>[
                             Image.asset(
                               'imagens/bloco.png',
@@ -112,7 +122,12 @@ class FirstRoute extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(right: 2.0),
                   child: FlatButton(
-                      onPressed: null,
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => HelpScreen(data: 'Resumir.html')),
+                        );
+                      },
                       child: Stack(children: <Widget>[
                         Image.asset(
                           'imagens/bloco.png',
@@ -134,7 +149,12 @@ class FirstRoute extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(right: 2.0),
                   child: FlatButton(
-                      onPressed: null,
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => HelpScreen(data: 'Intertextualizar.html')),
+                        );
+                      },
                       child: Stack(children: <Widget>[
                         Image.asset(
                           'imagens/bloco.png',
@@ -156,7 +176,12 @@ class FirstRoute extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(right: 2.0),
                   child: FlatButton(
-                      onPressed: null,
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => HelpScreen(data: 'Argumentar.html')),
+                        );
+                      },
                       child: Stack(children: <Widget>[
                         Image.asset(
                           'imagens/bloco.png',
@@ -184,7 +209,7 @@ class FirstRoute extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => HelpScreen()),
+                    MaterialPageRoute(builder: (context) => HelpScreen(data: 'Dicas.html')),
                   );
                 },
                 shape: RoundedRectangleBorder(
@@ -196,45 +221,28 @@ class FirstRoute extends StatelessWidget {
 void _updateText() async {
   const request = "https://raw.githubusercontent.com/gerverson/Resenhando/master/Textos/";
 
-  String key = "Dicas.html";
+  String key1 = "Dicas.html";
+  String key2 = "Estrutura.html";
+  String key3 = "Interpretar.html";
+  String key4 = "Resumir.html";
+  String key5 = "Intertextualizar.html";
+  String key6 = "Argumentar.html";
 
-  http.Response response = await http.get(request+key);
+  http.Response response1 = await http.get(request+key1);
+  http.Response response2 = await http.get(request+key2);
+  http.Response response3 = await http.get(request+key3);
+  http.Response response4 = await http.get(request+key4);
+  http.Response response5 = await http.get(request+key5);
+  http.Response response6 = await http.get(request+key6);
 
 
   final prefs = await SharedPreferences.getInstance ();
 
-  prefs.setString ('my_string_key', response.body);
+  prefs.setString (key1, response1.body);
+  prefs.setString (key2, response2.body);
+  prefs.setString (key3, response3.body);
+  prefs.setString (key4, response4.body);
+  prefs.setString (key5, response5.body);
+  prefs.setString (key6, response6.body);
 
-  String myString = prefs.getString ('my_string_key') ?? '';
-
-  //_saveData(key);
-
-//  _readData(key).then((data) {
-//     // _toDoList = json.decode(data);
-//    print(data);
-//  });
-
-  print(myString);
 }
-//
-//Future<File> _getFile(String data) async {
-//  final directory = await getApplicationDocumentsDirectory();
-//  return File("${directory.path}/"+data);
-//}
-//
-//Future<File> _saveData(String data) async {
-//  String data = "sdsdffsdfs";
-//
-//  final file = await _getFile(data);
-//  return file.writeAsString(data);
-//}
-//
-//Future<String> _readData(String data) async {
-//  try {
-//    final file = await _getFile(data);
-//
-//    return file.readAsString();
-//  } catch (e) {
-//    return null;
-//  }
-//}
