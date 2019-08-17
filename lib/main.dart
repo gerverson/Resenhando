@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:resenhando/dicas.dart';
+import 'package:resenhando/web.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -177,14 +178,13 @@ class FirstRoute extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => SecondScreen()),
+                    MaterialPageRoute(builder: (context) => HelpScreen()),
                   );
                 },
                 shape: RoundedRectangleBorder(
                     borderRadius: new BorderRadius.circular(30.0)))),
       ],
     );
-//  ));
 }}
 
 void _onPressed() {
