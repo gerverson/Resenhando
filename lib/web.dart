@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
+
 class HelpScreen extends StatefulWidget {
   @override
   HelpScreenState createState() {
@@ -18,10 +19,7 @@ class HelpScreenState extends State<HelpScreen> {
   Widget build(BuildContext context) {
     _loadHtmlFromAssets();
     return Scaffold(
-      appBar: AppBar(
-          title: Text('Help'),
-        backgroundColor: Colors.transparent,
-      ),
+      appBar: AppBar(title: Text('Help')),
       body: WebView(
         initialUrl: '',
         onWebViewCreated: (WebViewController webViewController) {
@@ -41,8 +39,10 @@ class HelpScreenState extends State<HelpScreen> {
 //    String fileText = '<html><body>hello world</body></html>';
 //    print(fileText);
 
-    _controller.loadUrl(Uri.dataFromString(fileText,
-            mimeType: 'text/html', encoding: Encoding.getByName('utf-8'))
-        .toString());
+    _controller.loadUrl( Uri.dataFromString(
+        fileText,
+        mimeType: 'text/html',
+        encoding: Encoding.getByName('utf-8')
+    ).toString());
   }
 }

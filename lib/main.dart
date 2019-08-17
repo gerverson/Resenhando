@@ -1,8 +1,14 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
-import 'package:resenhando/dicas.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:resenhando/web.dart';
+import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
+  _updateText();
   runApp(MaterialApp(
     title: 'Navigation Basics',
     home: FirstRoute(),
@@ -187,6 +193,48 @@ class FirstRoute extends StatelessWidget {
     );
 }}
 
-void _onPressed() {
-  print("Clique");
+void _updateText() async {
+  const request = "https://raw.githubusercontent.com/gerverson/Resenhando/master/Textos/";
+
+  String key = "Dicas.html";
+
+  http.Response response = await http.get(request+key);
+
+
+  final prefs = await SharedPreferences.getInstance ();
+
+  prefs.setString ('my_string_key', response.body);
+
+  String myString = prefs.getString ('my_string_key') ?? '';
+
+  //_saveData(key);
+
+//  _readData(key).then((data) {
+//     // _toDoList = json.decode(data);
+//    print(data);
+//  });
+
+  print(myString);
 }
+//
+//Future<File> _getFile(String data) async {
+//  final directory = await getApplicationDocumentsDirectory();
+//  return File("${directory.path}/"+data);
+//}
+//
+//Future<File> _saveData(String data) async {
+//  String data = "sdsdffsdfs";
+//
+//  final file = await _getFile(data);
+//  return file.writeAsString(data);
+//}
+//
+//Future<String> _readData(String data) async {
+//  try {
+//    final file = await _getFile(data);
+//
+//    return file.readAsString();
+//  } catch (e) {
+//    return null;
+//  }
+//}
