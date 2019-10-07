@@ -73,22 +73,24 @@
     <p>Sua função é para que a resenha ou qualquer outro texto, seja claro e coerente para o leitor, serve para dar
         indicações que guiem a leitura mostrando a relação entre as ideias.
     <p>
-    <table border="2px">
-        <tr>
-            <th>indicam adição de ideias</th>
-            <th>indicam contrastes de ideias ou argumentos contrários ou comentário negativo</th>
-            <th>indicam explicação/constatação/confirmação</th>
-            <th>indicam conclusões</th>
-            <th>introduzem argumentos /causas/justificativas</th>
-        </tr>
-        <tr>
-            <td>não só… mas; também</td>
-            <td>Entretanto; Embora; Ainda que; No entanto; Contudo; Apesar de; Mesmo que; Mas; Todavia</td>
-            <td>De fato; com efeito</td>
-            <td>Assim; Por isso; Assim sendo; Portanto; Logo; Isso posto.</td>
-            <td>Já que; Uma vez que; Devido a; Como; Pelo fato de; Porque; Pois; Por isso.</td>
-        </tr>
-    </table>
+    <div class="table-responsive">
+        <table border="2px" class="table">
+            <tr>
+                <th>indicam adição de ideias</th>
+                <th>indicam contrastes de ideias ou argumentos contrários ou comentário negativo</th>
+                <th>indicam explicação/constatação/confirmação</th>
+                <th>indicam conclusões</th>
+                <th>introduzem argumentos /causas/justificativas</th>
+            </tr>
+            <tr>
+                <td>não só… mas; também</td>
+                <td>Entretanto; Embora; Ainda que; No entanto; Contudo; Apesar de; Mesmo que; Mas; Todavia</td>
+                <td>De fato; com efeito</td>
+                <td>Assim; Por isso; Assim sendo; Portanto; Logo; Isso posto.</td>
+                <td>Já que; Uma vez que; Devido a; Como; Pelo fato de; Porque; Pois; Por isso.</td>
+            </tr>
+        </table>
+    </div>
     <p><b><font color='blue'>Ex:</font></b><i> Um assunto polêmico nos livros de Dan Brown é a religião, que sempre foi,
         tem sido, e sempre será um assunto muito sensível para mim, de acordo com meu posicionamento religioso… No
         entanto, este livro foi uma espécie de “batalha” entre religião e ciência.<br>
@@ -208,85 +210,168 @@
         font-size: initial
     }
 
-    table {
-        border: 1px solid #ccc;
-        border-collapse: collapse;
-        margin: 0;
-        padding: 0;
+    .table {
         width: 100%;
-        table-layout: fixed;
+        max-width: 100%;
+        margin-bottom: 1rem;
     }
 
-    table caption {
-        font-size: 1.5em;
-        margin: .5em 0 .75em;
+    .table th,
+    .table td {
+        padding: 0.75rem;
+        vertical-align: top;
+        border-top: 1px solid #eceeef;
     }
 
-    table tr {
-        background-color: #f8f8f8;
-        border: 1px solid #ddd;
-        padding: .35em;
+    .table thead th {
+        vertical-align: bottom;
+        border-bottom: 2px solid #eceeef;
     }
 
-    table th,
-    table td {
-        padding: .625em;
-        text-align: center;
+    .table tbody + tbody {
+        border-top: 2px solid #eceeef;
     }
 
-    table th {
-        font-size: .85em;
-        letter-spacing: .1em;
-        text-transform: uppercase;
+    .table .table {
+        background-color: #fff;
     }
 
-    @media screen and (max-width: 600px) {
-        table {
-            border: 0;
-        }
+    .table-sm th,
+    .table-sm td {
+        padding: 0.3rem;
+    }
 
-        table caption {
-            font-size: 1.3em;
-        }
+    .table-bordered {
+        border: 1px solid #eceeef;
+    }
 
-        table thead {
-            border: none;
-            clip: rect(0 0 0 0);
-            height: 1px;
-            margin: -1px;
-            overflow: hidden;
-            padding: 0;
-            position: absolute;
-            width: 1px;
-        }
+    .table-bordered th,
+    .table-bordered td {
+        border: 1px solid #eceeef;
+    }
 
-        table tr {
-            border-bottom: 3px solid #ddd;
-            display: block;
-            margin-bottom: .625em;
-        }
+    .table-bordered thead th,
+    .table-bordered thead td {
+        border-bottom-width: 2px;
+    }
 
-        table td {
-            border-bottom: 1px solid #ddd;
-            display: block;
-            font-size: .8em;
-            text-align: right;
-        }
+    .table-striped tbody tr:nth-of-type(odd) {
+        background-color: rgba(0, 0, 0, 0.05);
+    }
 
-        table td::before {
-            /*
-            * aria-label has no advantage, it won't be read inside a table
-            content: attr(aria-label);
-            */
-            content: attr(data-label);
-            float: left;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
+    .table-hover tbody tr:hover {
+        background-color: rgba(0, 0, 0, 0.075);
+    }
 
-        table td:last-child {
-            border-bottom: 0;
-        }
+    .table-active,
+    .table-active > th,
+    .table-active > td {
+        background-color: rgba(0, 0, 0, 0.075);
+    }
+
+    .table-hover .table-active:hover {
+        background-color: rgba(0, 0, 0, 0.075);
+    }
+
+    .table-hover .table-active:hover > td,
+    .table-hover .table-active:hover > th {
+        background-color: rgba(0, 0, 0, 0.075);
+    }
+
+    .table-success,
+    .table-success > th,
+    .table-success > td {
+        background-color: #dff0d8;
+    }
+
+    .table-hover .table-success:hover {
+        background-color: #d0e9c6;
+    }
+
+    .table-hover .table-success:hover > td,
+    .table-hover .table-success:hover > th {
+        background-color: #d0e9c6;
+    }
+
+    .table-info,
+    .table-info > th,
+    .table-info > td {
+        background-color: #d9edf7;
+    }
+
+    .table-hover .table-info:hover {
+        background-color: #c4e3f3;
+    }
+
+    .table-hover .table-info:hover > td,
+    .table-hover .table-info:hover > th {
+        background-color: #c4e3f3;
+    }
+
+    .table-warning,
+    .table-warning > th,
+    .table-warning > td {
+        background-color: #fcf8e3;
+    }
+
+    .table-hover .table-warning:hover {
+        background-color: #faf2cc;
+    }
+
+    .table-hover .table-warning:hover > td,
+    .table-hover .table-warning:hover > th {
+        background-color: #faf2cc;
+    }
+
+    .table-danger,
+    .table-danger > th,
+    .table-danger > td {
+        background-color: #f2dede;
+    }
+
+    .table-hover .table-danger:hover {
+        background-color: #ebcccc;
+    }
+
+    .table-hover .table-danger:hover > td,
+    .table-hover .table-danger:hover > th {
+        background-color: #ebcccc;
+    }
+
+    .thead-inverse th {
+        color: #fff;
+        background-color: #292b2c;
+    }
+
+    .thead-default th {
+        color: #464a4c;
+        background-color: #eceeef;
+    }
+
+    .table-inverse {
+        color: #fff;
+        background-color: #292b2c;
+    }
+
+    .table-inverse th,
+    .table-inverse td,
+    .table-inverse thead th {
+        border-color: #fff;
+    }
+
+    .table-inverse.table-bordered {
+        border: 0;
+    }
+
+    .table-responsive {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+    }
+
+    .table-responsive.table-bordered {
+        border: 0;
     }
 </style>
 </body>
